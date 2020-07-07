@@ -1,20 +1,25 @@
 <template>
     <ion-row class="nagrada">
             <ion-col size='2' class="simbol">
-                <img src='../../../../assets/rank.png'/>
+                <img :src='rank'/>
                 <br>
                 <h4>{{nagrada.rank}}</h4>
             </ion-col>
             <ion-col size='10'>
                 <h5>{{nagrada.sponzor}}</h5>
-                <p>{{nagrada.opis}}</p>
+                <p>{{nagrada.naziv}}</p>
             </ion-col>
       </ion-row>
 </template>
 
 <script>
 export default {
-    props:['nagrada']
+    props:['nagrada'],
+    computed:{
+        rank(){
+            return 'http://127.0.0.1:5000/uploads/rank.png'
+        }
+    }
 }
 </script>
 

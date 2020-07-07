@@ -2,16 +2,15 @@
     <div class='model'>
         <img :src="slika">
         <div>
-            <p>{{model.naziv}}</p>
+            <p>Trenutno nemamo sponzore za ovu grupu</p>
         </div>
     </div>
 </template>
 <script>
 export default {
-    props:['model'],
     computed:{
         slika(){
-            return 'http://127.0.0.1:5000/uploads/'+this.model.slika;
+            return 'http://127.0.0.1:5000/uploads/noData.png';
         }
     }
 }

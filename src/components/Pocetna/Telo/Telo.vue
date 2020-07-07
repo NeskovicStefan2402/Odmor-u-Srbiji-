@@ -23,7 +23,7 @@ export default {
                 },
                 {
                     'slika':'quiz.png',
-                    'lokacija':'calendar'
+                    'lokacija':'quiz'
                 },
                 {
                     'slika':'info.png',

@@ -1,6 +1,9 @@
 <template>
     <ion-row>
-        <ion-col size='8'>
+        <ion-col size='1'>
+            <ion-button color='danger' @click="close()">X</ion-button>
+        </ion-col>
+        <ion-col size='7'>
             <h3>{{dogadjaj.tema}}</h3>
         </ion-col>
         <ion-col size='4' class="vreme">
@@ -11,17 +14,18 @@
 </template>
 
 <script>
+import {eventBus} from '../../../main'
 export default {
     props:['dogadjaj'],
     methods:{
-        close(){
-            
-        }
-    }
+      close(){
+          eventBus.$emit('openModal',null)
+      }
+  }
 }
 </script>
 
-<style>
+<style scoped>
 .vreme{
     background-color: #e74c3c;
     color: white;

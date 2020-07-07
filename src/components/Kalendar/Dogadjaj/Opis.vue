@@ -2,7 +2,7 @@
     <div>
         <ion-row>
             <ion-col size='4'>
-                <img :src="require('@/assets/' + dogadjaj.slika + '')">
+                <!-- <img :src="require('@/assets/' + dogadjaj.slika + '')"> -->
             </ion-col>
             <ion-col size='8'>
                 <p>Datum kviza: {{dogadjaj.datum}}</p>
@@ -17,6 +17,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

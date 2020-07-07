@@ -1,8 +1,9 @@
 <template>
   <ion-page>
     <div class="pocetna">
+      <ion-button color='danger' @click="logout()" class="btn">out</ion-button>
       <Naslov/>
-      <Galerija :lista='lista'/>
+      <Galerija :lista='$store.state.galerija'/>
       <Telo/>
     </div>
   </ion-page>
@@ -17,31 +18,13 @@ export default {
     Galerija,
     Telo
   },
-  data(){
-    return{
-      lista:[
-        {
-          'naziv':'Nacionalni park Tara',
-          'slika':'tara.jpg',
-          'mesto':'Tara'
-        },
-        {
-          'naziv':'Nacionalni park Fruska gora',
-          'slika':'fruskagora.jpg',
-          'mesto':'Vojvodina'
-        },
-        {
-          'naziv':'Deliblatska pescara',
-          'slika':'deliblatska.jpg',
-          'mesto':'Vojvodina'
-        },
-        {
-          'naziv':'Uvac',
-          'slika':'uvac.jpg',
-          'mesto':'Sjenica'
-        }
-      ]
+  methods:{
+    logout(){
+      this.$store.dispatch('logout')
     }
+  },
+  created(){
+    this.$store.dispatch('sponsors','zlato')
   }
 }
 </script>
@@ -50,5 +33,18 @@ export default {
   background-color: #037D0B;
   /* background-image: url('../assets/pozadina.jpg'); */
   height: 100vh;
+}
+.btn{
+    background-color: white;
+    border-radius: 50%;
+    /* font-size: 25px; */
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-right: 5px;
+    position:absolute;
+    top:0;
+    right:0;
+    outline: none;
 }
 </style>

@@ -11,13 +11,13 @@ export default {
     },
     methods:{
         back(){
-            this.$router.push('/')
+            this.$router.push('/home')
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
 .back{
     background-color: white;
     border-radius: 50%;

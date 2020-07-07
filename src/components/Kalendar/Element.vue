@@ -1,9 +1,9 @@
 <template>
     <ion-row class="dogadjaj">
-            <ion-col size='2' class="datum">
-                <h3>{{dogadjaj.datum.split('.')[0]}}</h3>
+            <ion-col size='3' class="datum">
+                <h3>{{dogadjaj.datum.split('/')[0]}}/{{dogadjaj.datum.split('/')[1]}}</h3>
             </ion-col>
-            <ion-col size='8'>
+            <ion-col size='7'>
                 <p>{{dogadjaj.tema}}</p>
             </ion-col>
             <ion-col size='2' class="info" @click="openInfo">
@@ -14,27 +14,14 @@
 
 <script>
 import OpisDogadjaja from './Dogadjaj/OpisDogadjaja'
+import {eventBus} from '../../main'
 export default {
     props:['dogadjaj'],
     methods:{
         openInfo(){
-            return this.$ionic.modalController
-                    .create({
-                    component: OpisDogadjaja,
-                    cssClass: 'my-custom-class',
-                    componentProps: {
-                            data: {
-                                content: 'New Content',
-                            },
-                            propsData: {
-                                dogadjaj: this.dogadjaj,
-                            }
-                        }
-                    })
-                    .then(m => m.present())
-                    }
+            eventBus.$emit('openModal',this.dogadjaj)
+        }
     }
-
 }
 </script>
 
@@ -44,6 +31,9 @@ export default {
     border-radius: 10px;
     width:100%;
     margin-bottom: 10px;
+}
+h3{
+    font-size: 20px;
 }
 .datum{
    background-color: #bdc3c7; 

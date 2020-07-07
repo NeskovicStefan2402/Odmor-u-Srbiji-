@@ -23,7 +23,7 @@ export default {
 div{
     width: 100%;
     align-content: center;
-    padding: 30px;
+    padding: 5px;
     overflow:scroll;
     margin-bottom: 10px;
 }

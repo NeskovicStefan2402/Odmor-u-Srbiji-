@@ -1,22 +1,16 @@
 <template>
   <ion-page>
-      <ion-conext>
-        <!-- <p v-if="isConnected">We're connected to the server!</p>
-        <p>Message from server: "{{socketMessage}}"</p>
-        <p>For server: {{text}}</p> -->
+    <div class="kviz">
+      <div v-if="$store.state.work==false" class="loading">
+        <h3>Uskoro pocinje kviz...</h3>
+      </div>
+      <div v-else class="working">
         <p>Pitanje : {{pitanje.text}}</p>
-        <ion-row v-if="odgovori!=[]">
-          <ion-col size='6' v-for="(i,item) in odgovori" @click="izabrao(item)">
+          <div size='10' v-for="(i,item) in odgovori" @click="izabrao(item)" class="odg">
             <p>{{i.text}}</p>
-          </ion-col>
-        </ion-row>
-        <!-- <ion-card v-if="odgovorio!=null" :class='{green:odgovori[odgovorio].tacan==true,red:odgovori[odgovorio].tacan==false}'>
-          <p v-if='odgovori[odgovorio].tacan==true'> Vas odg je tacan! </p>
-          <p v-else> Vas odg nije tacan! </p>
-        </ion-card> -->
-        <input type="text" v-model="text">
-        <button @click="saljiNaServer"> Salji na server</button>
-        </ion-conext>
+          </div>
+      </div>
+    </div>
   </ion-page>
 </template>
 <script>
@@ -39,6 +33,7 @@ export default {
           alert('New event in future!')  
         });
         socket.on('pitanje',function(pitanje){
+          this.$store.state.work=true
           this.odgovorio=null;
           this.pitanje=pitanje;
           this.odgovori=pitanje['odgovori']
@@ -53,17 +48,32 @@ export default {
           if(!this.odgovori[i].tacan){
             socket.disconnect();
             alert('Socket je diskonektovan...')
+            this.$router.push('/')
           }
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
 .tacan{
   background-color: green;
 }
 .netacan{
   background-color: red;
+}
+.kviz{
+  height: 100vh;
+  background-color: #037D0B;
+  color: white;
+}
+.odg{
+  border: 0.5px solid yellowgreen ;
+  border-radius: 20px;
+  margin: 20px;
+}
+.loading{
+  display: flex;
+  justify-content: center
 }
 </style>

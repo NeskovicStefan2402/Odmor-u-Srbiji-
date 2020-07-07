@@ -1,6 +1,6 @@
 <template>
   <div>
-      <img :src="require('@/assets/' + dugme.slika + '')" class='dugme' @click="openFrame">
+      <img :src="slika" class='dugme' @click="openFrame">
   </div>
 </template>
 
@@ -10,6 +10,11 @@ export default {
     data(){
         return{
             current:null
+        }
+    },
+    computed:{
+        slika(){
+            return 'http://127.0.0.1:5000/uploads/'+this.dugme.slika;
         }
     },
     methods:{
@@ -35,7 +40,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .dugme{
     height: 70px;
     width: 70px;
