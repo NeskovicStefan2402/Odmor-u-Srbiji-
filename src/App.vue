@@ -12,21 +12,6 @@ import socket from './main'
 import {eventBus} from './main'
 export default {
   mounted(){
-        socket.on('notifikacija',function(pitanje){
-          this.$router.push('/quiz')
-        }.bind(this));
-        socket.on('krajKviza',function(pitanje){
-          this.$store.state.questions=[];
-          this.$store.state.answers=[];
-          this.$router.push('/')
-        }.bind(this));
-        socket.on('pitanja',function(pitanja){
-          this.$store.state.questions=pitanja
-        }.bind(this))
-        socket.on('events_response',function(lista){
-          this.$store.state.events=lista['Raspored']
-        }.bind(this))
-        // --------------------------------------------------------------------------
         socket.on('eval',function(data){
           console.log('Evaluacija je stigla');
           this.$store.state.eval=data
@@ -64,6 +49,8 @@ export default {
           if(data['objekat']==null){
             alert('Greska:'+data['error'])
           }else{
+            console.log(data['objekat']);
+            eventBus.$emit('editGallery',true)
             this.$store.state.galerija=data['objekat'];
           }
         }.bind(this))
@@ -75,13 +62,31 @@ export default {
             this.$store.state.events=data['objekat'];
           }
         }.bind(this))
-
+        socket.on('notification',function(data){
+          alert(data)
+        }.bind(this))
+        socket.on('loadingQuiz',function(kviz){
+          this.$store.state.kviz_id=kviz
+          this.$router.push('/quiz',kviz)
+        }.bind(this));
+        socket.on('uploadQuiz',function(data){
+          if(data['objekat']==null){
+            alert('Greska:'+data['error'])
+          }else{
+            console.log(data['objekat']);
+            this.$store.state.questions=data['objekat'];
+            this.$store.state.start=Date.now();
+          }
+        }.bind(this));
+        socket.on('endQuiz',function(data){
+            alert('Vreme za popunjavanje kviza je isteklo')
+            this.$store.dispatch('submitQuiz')
+        }.bind(this));
   }
 }
 </script>
 <style scoped>
 #app {
-  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

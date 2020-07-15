@@ -1,10 +1,10 @@
 <template>
-    <div class='model'>
+    <ion-card class='model'>
         <img :src="slika">
         <div>
             <p>{{model.naziv}}</p>
         </div>
-    </div>
+    </ion-card>
 </template>
 <script>
 export default {
@@ -29,5 +29,4 @@ img{
     padding: 0px; 
     font-size: 12px; 
 }
-
 </style>

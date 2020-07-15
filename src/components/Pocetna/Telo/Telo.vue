@@ -1,11 +1,10 @@
 <template>
-  <div class="telo">
-      <ion-row>
+      <ion-row class="telo">
           <ion-col v-for="i in buttons" size='6' align='center' class="kolonaDugme">
               <Dugme :dugme='i' />
           </ion-col>
       </ion-row>
-  </div>
+
 </template>
 
 <script>
@@ -22,16 +21,8 @@ export default {
                     'lokacija':'calendar'
                 },
                 {
-                    'slika':'quiz.png',
-                    'lokacija':'quiz'
-                },
-                {
-                    'slika':'info.png',
-                    'lokacija':'lokacija'
-                },
-                {
                     'slika':'rank.png',
-                    'lokacija':'connecting'
+                    'lokacija':'rangLista'
                 }
             ]
         }
@@ -42,5 +33,10 @@ export default {
 <style scoped>
 .kolonaDugme{
     padding-top: 30px;
+}
+.telo{
+    background-color: transparent;
+    height:100%;
+    padding-top: 100px;
 }
 </style>

@@ -19,11 +19,7 @@ import socket from '../../main'
 export default {
     methods:{
         commit(){
-            socket.emit('commit',this.$store.state.answers)
-            socket.disconnect()
-            this.$store.state.questions=[]
-            this.$store.state.answers=[]
-            this.$router.push('/')
+            this.$store.dispatch('submitQuiz')
         }
     }
 }
@@ -31,7 +27,9 @@ export default {
 
 <style scoped>
 .poslednji{
+    background-color: white;
     height: 100vh;
+    width: 100%;
     position: relative;
     padding: 30px;
 }

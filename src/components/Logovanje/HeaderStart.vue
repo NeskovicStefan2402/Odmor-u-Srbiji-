@@ -1,10 +1,10 @@
 <template>
-    <ion-toolbar>
-    <ion-segment>
-      <ion-segment-button value="all" checked @click="login()">
+    <ion-toolbar class="dugme">
+    <ion-segment class="dugme">
+      <ion-segment-button value="all" checked @click="login()" class="dugme">
         Login
       </ion-segment-button>
-      <ion-segment-button value="favorites"  @click="signup()">
+      <ion-segment-button value="favorites"  @click="signup()" class="dugme">
         Sign up
       </ion-segment-button>
     </ion-segment>
@@ -22,3 +22,12 @@ export default {
     }
 }
 </script>
+<style scoped>
+.dugme{
+  background-color: rgba(54, 12, 110, 0);
+  color: black;
+}
+.ion-segment,.ion-segment-button,.ion-toolbar{
+ background-color: rgba(54, 12, 110, 0.728);
+}
+</style>

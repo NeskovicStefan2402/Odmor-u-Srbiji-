@@ -16,6 +16,7 @@
 
 <script>
 import socket from '../../main'
+import {eventBus} from '../../main'
 export default {
     computed:{
         zlato(){
@@ -31,6 +32,7 @@ export default {
     methods:{
         izaberi(ele){
             socket.emit('sponsors',ele);
+            eventBus.$emit('editGallery',false)
        }
     }
 }

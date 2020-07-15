@@ -21,7 +21,11 @@ export default {
 
 <style scoped>
 .kalendar{
-  background-color: #037D0B;
-  height: 100vh;
+    background-image: url('../assets/pocetna.jpg');
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 </style>

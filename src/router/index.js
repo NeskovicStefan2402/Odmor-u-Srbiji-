@@ -5,6 +5,8 @@ import Kalendar from '../views/Kalendar.vue'
 import HeaderStart from '../components/Logovanje/HeaderStart'
 import Connecting from '../views/Connecting.vue'
 import Start from '../views/Start.vue'
+import RangLista from '../views/RangLista'
+import Info from '../views/Info'
 import { IonicVueRouter } from "@ionic/vue";
 Vue.use(IonicVueRouter);
 
@@ -15,12 +17,21 @@ Vue.use(IonicVueRouter);
     component: Home
   },
   {
+    path: '/rangLista',
+    name: 'RangLista',
+    component: RangLista
+  },
+  {
     path: '/',
     name: 'Welcome',
-    components:{  
-      'header-start':HeaderStart,
-      default:Start
-    }
+    component:Start
+    
+  },
+  {
+    path: '/info',
+    name: 'Informations',
+    component:Info
+    
   },
   {
     path: '/calendar',

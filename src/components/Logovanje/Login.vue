@@ -1,19 +1,19 @@
 <template>
     <div class="login">
         <div class='ion-item'>
-                <ion-input placeholder="Name" :value="user.phone" @input="user.phone = $event.target.value" class="polje"></ion-input>
+                <ion-input placeholder="Broj telefona" :value="user.phone" @input="user.phone = $event.target.value" class="polje"></ion-input>
         </div>
         <div class='ion-item'>
-                <ion-input type='password' placeholder="Password" :value="user.password" @input="user.password = $event.target.value" class="polje"></ion-input>
+                <ion-input type='Password' placeholder="Sifra" :value="user.password" @input="user.password = $event.target.value" class="polje"></ion-input>
             
         </div>
         <br>
         <ion-row align='center'>
             <ion-col>
-                <ion-button color='danger' @click="reset()"> Reset</ion-button>
+                <ion-button color='danger' @click="reset()"> Odustani</ion-button>
             </ion-col>
             <ion-col>
-                <ion-button color='success' @click="login()"> Login</ion-button>
+                <ion-button color='success' @click="login()"> Prijavi se</ion-button>
             </ion-col>
         </ion-row>
     </div>
@@ -44,12 +44,12 @@ export default {
 </script>
 <style scoped>
 ion-content{
-    background-color: #f2b620;
+    background-color: rgba(255, 255, 255, 0);
 }
 .polje{
-    background-color: #f2b620;
+    background-color: rgba(255, 255, 255, 0);
 }
-div{
-    background-color: #f2b620;
+.login{
+    padding-top: 20px;
 }
 </style>
